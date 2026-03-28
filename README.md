@@ -4,7 +4,8 @@
 Using temperature and snowfall data from 1992–2022, each resort is assigned a normalized risk score from 0 to 1 based on the rate at which its local climate is changing — the faster conditions are worsening, the higher the score. The map is built with MapLibre GL JS and deployed as a single self-contained HTML file.
 
 _Data_:
-  For most of the world — the European Alps, Canadian Rockies, Scandinavia, Japan, and the Appalachians — the model uses ERA5, the industry-standard global climate reanalysis dataset at 9 km resolution. For the American West, ERA5's grid is too coarse to capture the region's extreme topographic variability, so the model instead uses SNOTEL (snow water equivalent) and NOAA's GHCN (temperature) for higher-fidelity ground-truth data.
+  For most of the world — the European Alps, Canadian Rockies, Scandinavia, Japan, and the Appalachians — the model uses ERA5, the industry-standard global climate reanalysis dataset at 9 km resolution. For the American West, ERA5's grid is too coarse to capture the region's extreme topographic variability, so the model instead uses SNOTEL (snow water equivalent or SWE) and NOAA's GHCN (temperature) for higher-fidelity ground-truth data.
+  
   Raw data was processed in Python (NumPy, Pandas). Each resort is spatially matched to its nearest station or grid cell, with a 6.5°C/1,000m lapse rate correction applied for elevation differences. Trend slopes for snow and temperature are computed over meteorological winter (Dec–Mar), normalized into a composite score, and exported as embedded GeoJSON.
 
 _A Note on Interpretation_:
